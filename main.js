@@ -589,7 +589,7 @@ If you pass "Hello" it should return {"H": 1, "e": 1, "l": 2, "o": 1}
 function letterCount(string) {
   var object = {}
   for (var i = 0; i<string.length; i++){
-    if (object[string.charAt(i)]){
+    if (object[string[i]]){
       object[string.charAt(i)]++
     } else {
       object[string.charAt(i)]=1
@@ -627,6 +627,19 @@ Example:
 If you pass 0,2 it should return false because the only number between 0 and 2 is 1
 If you pass 0,6 it should return true because between 0 and six (the numbers 1,2,3,4,5) there are three odds - 1, 3 and 5
 */
+function threeOdds(x, y) {
+  var count = 0
+  for (var i = x+1; i < y; i++) {
+    if (i%2 !== 0){
+      count++
+    }
+  }
+  if (count>2){
+    return true
+  } else{
+    return false
+  }
+}
 
 // function threeOdds (x, y) {
 //   let count = 0
