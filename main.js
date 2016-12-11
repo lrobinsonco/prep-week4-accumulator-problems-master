@@ -13,7 +13,7 @@ function test() {
  return string;
 }
 
-
+console.log(test())
 
 /*
 ----------------------------------------
@@ -26,12 +26,12 @@ Example: if you pass it [1,2,3] then it should return 6 (which is 1 + 2 + 3)
 */
 function sum(array) {
   var result = 0
-   for (let i = 0; i < array.length; i++) {
+   for (var i = 0; i < array.length; i++) {
      result += array[i]
    }
 return result;
 }
-
+console.log(sum([3,4,5]))
 
 
 
@@ -48,12 +48,13 @@ Write function named doubleNumbers that will take an array of numbers and return
 
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
-function doubleNumbers(arr){
+function doubleNumbers(array){
   var results = [];
-  for (let i = 0; i < arr.length; i++) {
-    results[i] = arr[i]*2  }
+  for (var i = 0; i < array.length; i++) {
+    results[i] = array[i]*2  }
     return results
 }
+console.log(doubleNumbers([3,4,5]))
 
 // function doubleNumbers(arr){
 //   let newArr = arr.map(el => el+el)
@@ -78,12 +79,13 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 0) you'd get [0,0,0]
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
-function multiplyNumbers(array, n) {
-  let final = []
+function multiplyNumbers(array, number) {
+  var final = []
   for (var i = 0; i < array.length; i++) {
-    final[i] = array[i] *n  }
+    final[i] = array[i] *number  }
     return final;
 }
+console.log(multiplyNumbers([2,3,4], 10))
 
 
 
@@ -101,12 +103,12 @@ Write function named doubleLetters that will take a string and double every lett
 
 Example: if you pass it "abc" then it should return "aabbcc"
 */
-function doubleLetters(str){
-  str = str.split('')
-  let newArr = str.map(el => el+el)
-  return newArr.join('')
+function doubleLetters(string){
+  string = string.split('')
+  var newArray = string.map(el => el+el)
+  return newArray.join('')
 }
-
+console.log(doubleLetters('abcdef'))
 
 
 
@@ -127,15 +129,15 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
-function interleave(a1,a2){
+function interleave(array1,array2){
   var result = []
-  for (let i = 0; i < a1.length; i++) {
-    result.push(a1[i])
-    result.push(a2[i])
+  for (var i = 0; i < array1.length; i++) {
+    result.push(array1[i])
+    result.push(array2[i])
   }
   return result
 }
-
+console.log(interleave([]))
 // function interleave (arr1, arr2) {
 //   let newArr = []
 //   for (let i = 0; i<arr1.length; i++){
@@ -590,9 +592,9 @@ function letterCount(string) {
   var object = {}
   for (var i = 0; i<string.length; i++){
     if (object[string[i]]){
-      object[string.charAt(i)]++
+      object[string[i]]++
     } else {
-      object[string.charAt(i)]=1
+      object[string[i]]=1
     }
   }
   return object
@@ -673,7 +675,17 @@ Example:
 
 If you pass "a", 3, "*" it should return "**a" - that is, a string of length 3, padded on the left by the "*" character
 */
-
+function leftPad(string, length, fillChar) {
+  var fillString = ''
+  if (string.length < length){
+    for (var i =0; i<(length-string.length); i++){
+      fillString+=fillChar
+    }
+    return fillString+string
+  } else{
+    return string
+  }
+}
 // function leftPad(str, len, fill){
 //   let fillStr = ''
 //   if (str.length < len){
@@ -703,7 +715,14 @@ Example:
 If you pass "a", 3 it should return "aaa"
 If you pass "b", 3 it should return "bb"
 */
-
+function createString(length, character) {
+  var string = ''
+  for(var i =1; i<=length; i++){
+    string+=character
+  }
+  return string
+}
+console.log(createString(3, 'n'))
 // function createString(len, char){
 //   let str =''
 //   for (i=1; i<=len; i++){
@@ -731,6 +750,14 @@ Example:
 If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1
 If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1
 */
+function factorial(number) {
+  var output= 1
+  for (var i=number; i>0; i--){
+    output *= i
+  }
+  return output
+}
+console.log(factorial(6))
 
 // function factorial(num){
 //   let output = 1
@@ -757,6 +784,14 @@ Example:
 If you pass 1 it should return [1]
 If you pass 3 it should return [1,2,3]
 */
+function arrayOfNumbers(number) {
+  var array = []
+  for (var i=1; i<=number; i++){
+    array.push(i)
+  }
+  return array
+}
+console.log(arrayOfNumbers(3))
 
 // function arrayOfNumbers(num){
 //   let arr = []
@@ -782,7 +817,21 @@ Example:
 
 If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "even"}
 */
-
+function evenOdd(startNumber, endNumber) {
+  var object= {}
+  if (startNumber === 0 && endNumber === 0){
+    return object
+  }
+  for(var i=startNumber; i<=endNumber; i++){
+    var test = "odd"
+    if (i%2 ===0){
+      test = "even"
+    }
+    object[i.toString()] = test
+  }
+  return object
+}
+console.log(evenOdd(1, 5))
 
 // function evenOdd(start, end) {
 //   let obj = {}
@@ -815,6 +864,19 @@ Example:
 
 If you pass 2,"d" it should return {"d": true, "dd": true}
 */
+function growingKeys(number, string) {
+  var object = {};
+  var key = ''
+  if (number === 0){
+    return object
+  }
+  for (i=0; i<number; i++){
+    key+=string
+    object[key]= true
+  }
+  return object
+}
+console.log(growingKeys(3, 'n'))
 
 // function growingKeys(num, str) {
 //   let obj = {};
@@ -848,6 +910,17 @@ Example:
 If you pass [1,1], 1 it should return true
 If you pass [1,2], 1 it should return false
 */
+function every(array, value) {
+  var output = true
+  array.forEach(el => {
+    if (el !== value){
+      output= false
+    }
+  })
+  return output
+}
+console.log(every([3,3], 2))
+
 
 // function every(arr, value){
 //   let output = true
@@ -876,6 +949,14 @@ Example:
 If you pass [1,2], 1 it should return true
 If you pass [3,2], 1 it should return false
 */
+function some(array, value) {
+  if (array.indexOf(value) > -1){
+    return true
+  } else {
+    return false
+  }
+}
+console.log(some([3,4], 4))
 
 // function some(arr, val){
 //   if (arr.indexOf(val) > -1){
@@ -902,6 +983,18 @@ Example:
 If you pass ["Sue", "Will"] it should return "Sue and Will"
 If you pass ["Sue", "Will", "Rachel"] it should return "Sue, Will and Rachel"
 */
+function toSentence(array) {
+  var string = ''
+  if (array.length === 0){
+    return string
+  }
+  var join = array[array.length-2] + " and " + array[array.length-1]
+  for (var i=0; i<array.length-2; i++){
+    string+=array[i] + ', '
+  }
+  return string + join
+}
+console.log(toSentence(["peas", "carrots", "corn"]))
 
 // function toSentence(arr){
 //   let str = ''
@@ -937,6 +1030,14 @@ Example:
 If you pass ["Sue", "Will"] it should return "SW"
 If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 */
+function acronym(array) {
+  var output = []
+  for (var i= 0; i<array.length; i++){
+    output.push(array[i].charAt(0))
+  }
+  return output.join('')
+}
+console.log(acronym(["peas", "carrots", "corn"]))
 
 // function acronym(arr){
 //   let output = []
@@ -946,8 +1047,8 @@ If you pass ["Java", Script", "Object", "Notation"] it should return "JSON"
 //   return output.join('')
 // }
 
-
-
+//(object[string[i]])
+//obj[str.charAt(i)]
 
 
 
@@ -962,7 +1063,20 @@ Example:
 
 If you pass [0,-3,2,5] it should return -3
 */
-
+function min(array) {
+  if (array.length === 0){
+    return undefined
+  } else {
+    var negative = Infinity
+    array.forEach(el => {
+      if (el <= negative){
+        negative = el
+      }
+    })
+    return negative
+  }
+}
+console.log(min([-1, -2, 4, 5]))
 // function min(arr){
 //   if (arr.length === 0 ){
 //     return undefined
@@ -997,7 +1111,18 @@ Example:
 If you pass [{id: 1, name: "Joe"}, {id: 2, name: "Sue"}] it should return {1: {id: 1, name: "Joe"}, 2: {id: 2, name: "Sue"}}
 
 */
-
+function index(array, property) {
+  var object= {}
+  if (array.length === 0 ){
+    return object
+  } else {
+    array.forEach(el =>{
+      object[el[property]] = el
+    })
+  }
+  return object
+}
+//console.log(index({id: 1, name: "Joe"}, {id: 2, name: "Sue"}))
 // function index(arr, prop){
 //   let obj = {}
 //   if (arr.length === 0 ){
@@ -1026,12 +1151,20 @@ Example:
 
 If you pass {id: 1, name: "Joe"} it should return {1: "id", Joe: "name"}
 */
-let obj = {id: 1, name: "Joe"}
-let obj2 = {}
-
-for(let key in obj) {
-  obj2[obj[key]] = key;
+function invert(object) {
+  var output = {}
+  for (var key in object){
+    output[object[key]] = key
+  }
+  return output
 }
+console.log(invert({id: 1, name: "joe"}))
+// let obj = {id: 1, name: "Joe"}
+// let obj2 = {}
+//
+// for(let key in obj) {
+//   obj2[obj[key]] = key;
+// }
 
 // function invert (obj){
 //   let output = {}
@@ -1058,7 +1191,17 @@ Example:
 
 If you pass {"contract": "foo"}, "Fred" it should return {"contract-signed": "foo - Fred"}
 */
+function addSignature(name, object) {
+  var output = {}
+  for (var key in object){
+    var newKey = key + '-signed'
+    var newValue = object[key] + ' - ' + name
+    output[newKey] = newValue
+  }
+  return output
+}
 
+console.log(addSignature({"contract": "Robinson"}, "Lee"))
 // function addSignature(name, obj) {
 //   let output = {}
 //   for (var key in obj){
@@ -1085,11 +1228,19 @@ Example:
 
 If you pass {name: "Will", age: 24} it should return ["name - will", "age - 24"]
 */
-
+function pairs(object) {
+  var array = []
+  for (var key in object){
+    var string = `${key} - ${object[key]}`
+    array.push(string)
+  }
+  return array
+}
+console.log(pairs({name: "lee", age: 42}))
 // function pairs(obj){
 //   let arr =[]
 //   for (var key in obj){
-//     let str = `${key} - ${obj[key]}`
+//      let str = `${key} - ${obj[key]}`
 //     arr.push(str)
 //   }
 //   return arr
@@ -1111,7 +1262,14 @@ Example:
 
 If you pass {a: 1, b: 2} it should return 3
 */
-
+function sumValues(object) {
+  var count= 0
+  for (var key in object){
+    count += object[key]
+  }
+  return count
+}
+console.log(sumValues({a:2, b:3, c:4}))
 // function sumValues(obj){
 //   let count = 0
 //   for (var key in obj){
@@ -1136,7 +1294,18 @@ Example:
 
 If you pass {1999: 4036, 2000: 7654} it should return '2000'
 */
-
+function biggestProperty(object) {
+  var highest = undefined
+  var temporary = -Infinity
+  for(var key in object){
+    if (temporary < object[key]){
+      highest = key
+      temporary = object[key]
+    }
+  }
+  return highest
+}
+console.log(biggestProperty({1999: 4036, 2000: 7654, 2001: 8000}))
 // function biggestProperty (obj){
 //     let king = undefined
 //     let temp = -Infinity
@@ -1171,7 +1340,16 @@ Example:
 
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return '1999'
 */
-
+function keyForValue(object, value) {
+  var temporary = undefined
+  for(var key in object){
+    if (object[key] === value){
+      temporary = key
+    }
+  }
+  return temporary
+}
+console.log({1999: 4036, 2000: 7654}, 7654)
 // function keyForValue(obj, val){
 //   let temp = undefined
 //   for (var key in obj){
@@ -1200,7 +1378,15 @@ Example:
 
 If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 */
-
+function containsValue(object, value) {
+  for(var key in object){
+    if(object[key] === value){
+      return true
+    }
+  }
+    return false
+}
+console.log(containsValue({1999: 2022, 1998: 2024, 1997: 2026}, 2026))
 // function containsValue(obj, val){
 //   for (var key in obj){
 //     if (obj[key] === val) {
