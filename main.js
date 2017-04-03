@@ -82,7 +82,7 @@ Examples:
 function multiplyNumbers(array, number) {
   var final = []
   for (var i = 0; i < array.length; i++) {
-    final[i] = array[i] *number  }
+    final[i] = array[i] * number  }
     return final;
 }
 console.log(multiplyNumbers([2,3,4], 10))
@@ -169,7 +169,7 @@ function createRange(num, name) {
   }
   return result;
 }
-console.log(createRange(3, 'n'))
+console.log(createRange(3, 'n'));
 // function multiplyNumbers(array, n) {
 //  let final = []
 //  for (var i = 0; i < array.length; i++) {
@@ -423,6 +423,7 @@ function sumLetters(string) {
   }
   return output
 }
+console.log(sumLetters(['hello']))
 // function sumLetters(str){
 //   let output
 //   let arr = str.split('')
