@@ -278,9 +278,12 @@ Example:
 If you pass it "abcdef" then it should return "ace" because those represent every other letter
 */
 function everyOther(string) {
-  var string2 = [];
+  var string2 = "";
+  string.split('');
   for (var i = 0; i < string.length; i++) {
-    string2.push(string[i]) + 1;
+    if(i % 2 === 0){
+      string2+= string[i];
+        }
   }
   return string2;
 }
@@ -519,14 +522,18 @@ Example:
 
 If you pass "a", 3, "*" it should return "**a" - that is, a string of length 3, padded on the left by the "*" character
 */
-// function leftPad(string, lenght, char) {
-//   var result = '';
-//   for (var i = 0; i < string.length; i++) {
-//     if(string.length[i]
-//   }
-//   return result;
-// }
-
+function leftPad(string, length, char) {
+  var result = '';
+    if(string.length < length){
+      for (var i = 0; i <(length-string.length) ; i++) {
+        result += char;
+      }
+      return result + string;
+    }else{
+      return string;
+    }
+}
+console.log(leftPad('a',3,'*'));
 
 
 
@@ -544,8 +551,14 @@ Example:
 If you pass "a", 3 it should return "aaa"
 If you pass "b", 3 it should return "bb"
 */
-
-
+function createString(num, letter) {
+  var string = '';
+  for (var i = 1; i <= num; i++) {
+    string+=letter;
+  }
+  return string;
+}
+console.log(createString(3,'a'));
 
 
 
@@ -565,8 +578,14 @@ Example:
 If you pass 4 it should return 24 since that's 4 * 3 * 2 * 1
 If you pass 5 it should return 120 since that's 5 * 4 * 3 * 2 * 1
 */
-
-
+function factorial(number) {
+  var total = 1;
+  for (var i = number; i>0; i--) {
+    total *= i;
+  }
+  return total;
+}
+console.log(factorial(4));
 
 
 
@@ -584,8 +603,14 @@ Example:
 If you pass 1 it should return [1]
 If you pass 3 it should return [1,2,3]
 */
-
-
+function arrayOfNumbers(number) {
+  var array = [];
+  for (var i = 1; i<=number ; i++) {
+    array.push(i);
+  }
+  return array;
+}
+console.log(arrayOfNumbers(3));
 
 
 
@@ -602,8 +627,23 @@ Example:
 
 If you pass 1,4 it should return {"1": "odd", "2": "even", "3": "odd", "4": "even"}
 */
-
-
+function evenOdd(startNumber, endNumber) {
+  var object = {};
+  var value;
+  if (startNumber === 0 && endNumber === 0) {
+    return object;
+  }
+  for (var i = startNumber; i <= endNumber; i++) {
+    if(i%2 === 0){
+      value = "even";
+    }else {
+      value = "odd";
+    }
+    object[i.toString()] = value;
+  }
+  return object;
+}
+console.log(evenOdd(1,5));
 
 
 
@@ -620,8 +660,19 @@ Example:
 
 If you pass 2,"d" it should return {"d": true, "dd": true}
 */
-
-
+function growingKeys(number, string) {
+  var object = {};
+  var key = '';
+  if (number === 0) {
+    return object;
+  }
+  for (var i = 0; i < number; i++) {
+    key += string;
+    object[key] = true;
+  }
+  return object;
+}
+console.log(growingKeys(3, 'a'));
 
 
 
@@ -641,8 +692,16 @@ Example:
 If you pass [1,1], 1 it should return true
 If you pass [1,2], 1 it should return false
 */
-
-
+function every(array, value) {
+  var output = true;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] !== value) {
+      output = false;
+    }
+  }
+  return output;
+}
+console.log(every([1,2],1));
 
 
 
@@ -660,7 +719,9 @@ Example:
 If you pass [1,2], 1 it should return true
 If you pass [3,2], 1 it should return false
 */
-
+function some(array, value){
+  
+}
 
 
 
